@@ -1,6 +1,6 @@
 # Redux API
 
-redux api is a redux middleware that send request.
+A redux middleware making api call, but with middlewares.
 
 # usage
 ## install
