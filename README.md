@@ -5,7 +5,7 @@ A redux middleware making api call, but with middlewares.
 # usage
 ## install
 ```bash
-yarn add redux-callapi
+yarn add @abramstyle/redux-api
 ```
 
 ## quick start
@@ -75,6 +75,7 @@ once a call api action is dispatched, an promise is returned.
   meta: callAPI.meta || {}
 }
 ```
+
 ### success action
 ```js
 {
@@ -93,3 +94,4 @@ once a call api action is dispatched, an promise is returned.
 }
 ```
 *NOTE*: payload is an error instance. http status code will be found as error.status. the error message responded from server will be found as error.data. the full response will be find as error.response.
+
