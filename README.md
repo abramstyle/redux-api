@@ -54,8 +54,11 @@ one of omit, same-origin, or include. must be a string.
 ### `callAPI.headers`
 must be an object. specified request headers.
 
+### `callAPI.query`
+it will be append to url as query.
+
 ### `callAPI.data`
-data should be sent to server. if request method, it will be append to url as query.
+data should be sent to server. if it is an get method, it will be append to url as query.
 
 ### `callAPI.method`
 request method, should be a valid method.
@@ -94,4 +97,3 @@ once a call api action is dispatched, an promise is returned.
 }
 ```
 *NOTE*: payload is an error instance. http status code will be found as error.status. the error message responded from server will be found as error.data. the full response will be find as error.response.
-
