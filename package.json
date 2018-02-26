@@ -7,7 +7,9 @@
   "author": "Abram.Zhao",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+      "coverage": "yarn run test && yarn run append",
+      "test": "jest --coverage",
+      "append": "coveralls < coverage/lcov.info"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
