@@ -2,16 +2,18 @@
   "name": "@abramstyle/redux-api",
   "version": "0.1.5",
   "description": "A redux middleware making api call, but with middlewares.",
-  "main": "index.js",
+  "main": "dist/redux-api.js",
   "repository": "https://github.com/abramstyle/redux-api",
   "author": "Abram.Zhao",
   "license": "MIT",
   "scripts": {
-      "coverage": "yarn run test && yarn run append",
-      "test": "jest --coverage",
-      "append": "coveralls < coverage/lcov.info"
+    "build": "webpack -p",
+    "coverage": "yarn run test && yarn run append",
+    "test": "jest --coverage",
+    "append": "coveralls < coverage/lcov.info"
   },
   "devDependencies": {
+    "babel-loader": "^7.1.3",
     "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -20,7 +22,9 @@
     "eslint-plugin-react": "^7.4.0",
     "jest": "^22.0.4",
     "nock": "^9.1.6",
-    "redux-mock-store": "^1.4.0"
+    "redux-mock-store": "^1.4.0",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9"
   },
   "dependencies": {
     "@abramstyle/utils": "^0.8.13",
