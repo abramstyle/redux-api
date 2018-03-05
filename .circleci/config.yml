@@ -74,7 +74,7 @@ jobs:
           paths:
             - dist
             - node_modules
-          key: v1-build-{{ checksum "./dist/redux-api.js" }}
+          key: v1-build-{{ .Revision }}
   deploy:
     filters:
       branches:
@@ -86,10 +86,10 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
+      # use built result
       - restore_cache:
           keys:
-          - v1-build-{{ checksum "./dist/redux-api.js" }}
+          - v1-build-{{ .Revision }}
           # fallback to using the latest cache if no exact match is found
           - v1-build-
 
