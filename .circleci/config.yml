@@ -67,14 +67,14 @@ jobs:
 
       - run: yarn install
 
+      # build packages
+      - run: yarn run build
+
       - save_cache:
           paths:
             - dist
             - node_modules
           key: v1-build-{{ checksum "./dist/redux-api.js" }}
-
-      # build packages
-      - run: yarn run build
   deploy:
     filters:
       branches:
