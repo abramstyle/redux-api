@@ -4,41 +4,6 @@
 #
 version: 2
 jobs:
-  build:
-    filters:
-      branches:
-        only:
-          - master
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:latest
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # build packages
-      - run: yarn run build
   test:
     filters:
       branches:
@@ -74,6 +39,42 @@ jobs:
 
       # run tests!
       - run: yarn run coverage
+  build:
+    filters:
+      branches:
+        only:
+          - master
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:latest
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - dist
+            - node_modules
+          key: v1-build-{{ checksum "./dist/redux-api.js" }}
+
+      # build packages
+      - run: yarn run build
   deploy:
     filters:
       branches:
@@ -88,9 +89,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-build-{{ checksum "./dist/redux-api.js" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v1-build-
 
       - run:
           name: add npm token
