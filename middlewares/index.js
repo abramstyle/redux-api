@@ -1,5 +1,3 @@
-const mime = require('mime-types');
-
 async function responseParser(data) {
   const resultData = Object.assign({}, data);
   const { response } = data;
@@ -8,12 +6,12 @@ async function responseParser(data) {
   }
 
   const { headers } = response;
-  const contentType = headers.get('content-type');
-  const type = mime.extension(contentType) || 'text';
+  const contentType = headers.get('content-type') || 'text/plain';
+  console.log('contentType: ', contentType);
   let result = null;
-  if (type === 'json') {
+  if (contentType === 'application/json') {
     result = await response.json();
-  } else if (type === 'text') {
+  } else if (contentType === 'text/plain') {
     const text = await response.text();
     try {
       result = JSON.parse(text);

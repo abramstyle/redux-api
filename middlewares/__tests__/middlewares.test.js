@@ -142,6 +142,38 @@ describe('test responseParser', () => {
     });
   });
 
+  test('responseParser will parse text', async () => {
+    expect.assertions(1);
+
+    const text = 'Laudantium ab fugiat saepe tempora. Mollitia necessitatibus adipisci dolorem enim. Sint minus aut quas quia ad tenetur vel.';
+    nock('http://api.callapi.com')
+      .get('/string')
+      .reply(200, text, {
+        'Content-Type:': 'text/plain',
+      });
+
+    const endpoint = 'http://api.callapi.com/string';
+    const response = await fetch(endpoint);
+
+    const fetchData = {
+      fetchOptions: {},
+      url: endpoint,
+      response,
+      duration: 0,
+      error: null,
+    };
+    const result = await responseParser(fetchData);
+
+    expect(result).toEqual({
+      data: text,
+      fetchOptions: {},
+      url: endpoint,
+      response,
+      duration: 0,
+      error: null,
+    });
+  });
+
   test('responseParser will parse error', async () => {
     expect.assertions(1);
 
