@@ -8,7 +8,6 @@ async function responseParser(data) {
   const { headers } = response;
   const typeHeader = (headers.get('content-type') || 'text/plain').split(';');
   const contentType = typeHeader[0];
-  console.log('contentType: ', contentType);
   let result = null;
   if (contentType === 'application/json') {
     result = await response.json();
