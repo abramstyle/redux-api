@@ -63,6 +63,25 @@ data should be sent to server. if it is an get method, it will be append to url 
 ### `callAPI.method`
 request method, should be a valid method.
 
+### `callAPI.isSuccess`
+check if a request is success.
+
+the resultPayload will be passed into the function.
+
+return `true` or `false` to identity if result is succeed.
+
+### `callAPI.success`
+this function will be called after request is success finished.
+
+the result payload will be passed into the function.
+
+### `callAPI.failure`
+this function will be called after request is failure.
+
+the result payload will be passed into the function.
+
+###
+
 ## Lifecycle
 an api request has these status: initial, requesting, success, failure.
 
