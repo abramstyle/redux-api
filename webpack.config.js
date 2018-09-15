@@ -8,7 +8,7 @@ module.exports = {
     [libName]: './index.js',
   },
   externals: {
-    '@abramstyle/utils': '@abramstyle/utils',
+    'fanas': 'fanas',
     'isomorphic-fetch': 'isomorphic-fetch',
     'mime-types': 'mime-types',
     redux: 'redux',

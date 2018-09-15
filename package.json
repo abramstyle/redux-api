@@ -27,7 +27,6 @@
     "webpack-cli": "^2.0.9"
   },
   "dependencies": {
-    "@abramstyle/utils": "^0.8.13",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "isomorphic-fetch": "^2.2.1",
