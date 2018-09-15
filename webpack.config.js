@@ -8,7 +8,7 @@ module.exports = {
     [libName]: './index.js',
   },
   externals: {
-    'fanas': 'fanas',
+    fanas: 'fanas',
     'isomorphic-fetch': 'isomorphic-fetch',
     'mime-types': 'mime-types',
     redux: 'redux',
