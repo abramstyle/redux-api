@@ -1,6 +1,6 @@
 {
   "name": "@abramstyle/redux-api",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A redux middleware making api call, but with middlewares.",
   "main": "dist/redux-api.js",
   "repository": "https://github.com/abramstyle/redux-api",
