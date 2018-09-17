@@ -27,6 +27,15 @@ an function that will transform fetchOptions before request.
 
 you can do some common things for every request.
 
+### `options.middleware`
+define global middleware just like `callAPI.middleware`
+### `options.isSuccess`
+define global success checker just like `callAPI.isSuccess`
+### `options.success`
+define global success callback just like `callAPI.success`
+### `options.failure`
+define global failure callback just like `callAPI.failure`
+
 # CALL_API Action
 ## example
 
@@ -70,15 +79,21 @@ the resultPayload will be passed into the function.
 
 return `true` or `false` to identity if result is succeed.
 
+*NOTE:* It will override global `options.isSuccess`
+
 ### `callAPI.success`
 this function will be called after request is success finished.
 
 the result payload will be passed into the function.
 
+*NOTE:* It will override global `options.success`
+
 ### `callAPI.failure`
 this function will be called after request is failure.
 
 the result payload will be passed into the function.
+
+*NOTE:* It will override global `options.failure`
 
 ###
 
@@ -116,3 +131,6 @@ once a call api action is dispatched, an promise is returned.
 }
 ```
 *NOTE*: payload is an error instance. http status code will be found as error.status. the error message responded from server will be found as error.data. the full response will be find as error.response.
+
+## TODO
+- add tests for new features
