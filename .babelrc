@@ -4,9 +4,9 @@
       "env",
       {
         "targets": {
-          "node": "current"
-        },
-        "debug": true
+          "node": "current",
+          "browsers": ["last 2 versions"],
+        }
       }
     ]
   ]
